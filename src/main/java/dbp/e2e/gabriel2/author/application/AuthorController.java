@@ -1,7 +1,9 @@
 package dbp.e2e.gabriel2.author.application;
 
 import dbp.e2e.gabriel2.author.domain.Author;
+import dbp.e2e.gabriel2.author.domain.AuthorDTO;
 import dbp.e2e.gabriel2.author.domain.AuthorService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,4 +37,12 @@ public class AuthorController {
     public ResponseEntity<Author> getAuthorById(@PathVariable Long id){
         return ResponseEntity.ok(authorService.getAuthorById(id));
     }
+
+    @PostMapping("/pepe")
+    public ResponseEntity<AuthorDTO> gethola(@PathVariable Author author){
+        ModelMapper modelMapper = new ModelMapper();
+        AuthorDTO authorDTO = modelMapper.map(author, AuthorDTO.class);
+
+    }
+
 }

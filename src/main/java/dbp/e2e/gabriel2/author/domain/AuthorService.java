@@ -22,10 +22,8 @@ public class AuthorService {
         }
         return authors;
     }
-
     public Author getAuthorById(Long id){
-        return authorRepository.findById(id)
-                .orElseThrow(() -> new AuthorNotFoundException("Author not found with id " + id));
+        return authorRepository.findById(id).orElseThrow(() -> new AuthorNotFoundException("Author not found with id " + id));
     }
 
     public Author createAuthor(Author newauthor){

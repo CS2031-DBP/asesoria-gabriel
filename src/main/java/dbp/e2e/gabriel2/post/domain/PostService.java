@@ -1,5 +1,6 @@
 package dbp.e2e.gabriel2.post.domain;
 
+import dbp.e2e.gabriel2.post.exception.PostNotFoundException;
 import dbp.e2e.gabriel2.post.infrastructure.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,11 @@ public class PostService {
 
     public List<Post> getAll(){
         return postRepository.findAll();
+    }
+
+
+    public Post getPostById(Long id){
+        return postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("Post not found with id " + id));
     }
 
     public Post createPost(Post post){
